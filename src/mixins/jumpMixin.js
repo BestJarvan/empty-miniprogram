@@ -2,7 +2,7 @@
  * @Author: Yahui.Jiang
  * @Date: 2020-11-09 10:43:44
  * @LastEditors: Yahui.Jiang
- * @LastEditTime: 2020-11-09 11:05:36
+ * @LastEditTime: 2020-11-09 14:00:38
  * @Description:
  */
 import { createMixin } from '../core/index'
@@ -14,8 +14,8 @@ export const jumpMixin = createMixin({
     // 普通跳转
     _push (url, params) {
       if (!url) return
-      let arr = url.split('/').slice(1)
-      if (TAB_PAGE.indexOf(arr[1]) === -1) {
+      const arr = url.split('/').slice(1)
+      if (TAB_PAGE.includes(arr[1])) {
         if (params) {
           url += formatUrl(params)
         }
@@ -29,6 +29,22 @@ export const jumpMixin = createMixin({
       }
     },
     _redirect (url, params) {
+      if (!url) return
+      if (params) {
+        url += formatUrl(params)
+      }
+      wx.redirectTo({
+        url
+      })
+    },
+    _launch (url, params) {
+      if (!url) return
+      if (params) {
+        url += formatUrl(params)
+      }
+      wx.reLaunch({
+        url
+      })
     },
     _back (delta = 1) {
       wx.navigateBack({
