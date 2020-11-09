@@ -6,7 +6,6 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=TEST gulp --gulpfile build/build-dev.js ",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "create": "sh ./build/create.sh"
   },
   "husky": {
