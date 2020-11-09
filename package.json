@@ -1,0 +1,56 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "",
+  "author": "蒋亚辉 <j532547613@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=TEST gulp --gulpfile build/build-dev.js ",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create": "sh ./build/create.sh"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js, scss}": [
+      "eslint --ext",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-eslint": "^5.0.0",
+    "gulp-preprocess": "^3.0.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-tap": "^1.0.1",
+    "gulp-uglify": "^3.0.2",
+    "cross-env": "^5.2.0",
+    "del": "^3.0.0",
+    "eslint": "^5.0.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-prettier": "2.6.2",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^4.0.0",
+    "husky": "^3.0.2",
+    "lint-staged": "^9.2.1",
+    "prettier": "1.14.3",
+    "rimraf": "^2.6.3",
+    "sass": "^1.13.2",
+    "shelljs": "^0.8.3"
+  },
+  "dependencies": {}
+}
