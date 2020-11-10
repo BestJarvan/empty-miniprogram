@@ -5,7 +5,10 @@
   "author": "蒋亚辉 <j532547613@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=TEST gulp --gulpfile build/build-dev.js ",
+    "dev": "cross-env NODE_ENV=TEST gulp --gulpfile build/build-dev.js --ip",
+    "build": "gulp --gulpfile build/build-prod.js",
+    "pub_test": "cross-env NODE_ENV=TEST npm run build",
+    "pub_online": "cross-env NODE_ENV=ONLINE npm run build",
     "create": "sh ./build/create.sh"
   },
   "husky": {
@@ -48,6 +51,7 @@
     "gulp-uglify": "^3.0.2",
     "husky": "^3.0.2",
     "lint-staged": "^9.2.1",
+    "minimist": "^1.2.5",
     "prettier": "1.14.3",
     "rimraf": "^2.6.3",
     "sass": "^1.13.2",

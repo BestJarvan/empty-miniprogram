@@ -2,7 +2,7 @@
  * @Author: Yahui.Jiang
  * @Date: 2020-03-03 19:25:50
  * @LastEditors: Yahui.Jiang
- * @LastEditTime: 2020-11-09 11:25:32
+ * @LastEditTime: 2020-11-10 20:17:16
  * @Description:
  */
 const gulp = require('gulp')
@@ -24,6 +24,11 @@ const packageJson = '../package.json'
 const configJson = '../mini-package.json'
 const config = require('../package.json')
 const version = parseFloat(config.version.split('.').join(''))
+const minimist = require('minimist');
+
+const ipOpt = minimist(process.argv.slice(2), {
+  string: 'ip'
+}).ip
 
 function task_clean (done) {
   del.sync(['dist/**/*'])
@@ -51,7 +56,8 @@ function task_js () {
       context: {
         // 此处可接受来自调用命令的 NODE_ENV 参数
         NODE_ENV: process.env.NODE_ENV || 'ONLINE',
-        NODE_VERSION: version
+        NODE_VERSION: version,
+        NODE_IP: ipOpt
       }
     }))
     .pipe(
