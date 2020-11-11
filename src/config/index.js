@@ -2,7 +2,7 @@
  * @Author: Yahui.Jiang
  * @Date: 2020-11-09 10:46:01
  * @LastEditors: Yahui.Jiang
- * @LastEditTime: 2020-11-10 20:21:46
+ * @LastEditTime: 2020-11-11 14:39:43
  * @Description:
  */
 const BASE_REQUEST_URL = {
@@ -19,6 +19,8 @@ const BASE_REQUEST_URL = {
 
 const BASE_IP = '/* @echo NODE_IP */'
 export const BASE_URL = BASE_IP ? BASE_IP : BASE_REQUEST_URL.requestUrl
+
+export const SUCCESS = 200
 
 // 版本号
 export const version = '/* @echo NODE_VERSION */'

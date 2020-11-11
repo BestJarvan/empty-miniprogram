@@ -2,7 +2,7 @@
  * @Author: Yahui.Jiang
  * @Date: 2020-11-09 10:43:44
  * @LastEditors: Yahui.Jiang
- * @LastEditTime: 2020-11-11 11:11:49
+ * @LastEditTime: 2020-11-11 13:44:10
  * @Description:
  */
 import { createMixin } from '../core/index'
@@ -23,7 +23,6 @@ export default createMixin({
         if (params) {
           url += formatUrl(params)
         }
-        console.log(url)
         wx.navigateTo({
           url
         })

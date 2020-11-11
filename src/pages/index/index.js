@@ -2,10 +2,11 @@
  * @Author: Yahui.Jiang
  * @Date: 2020-01-15 14:31:20
  * @LastEditors: Yahui.Jiang
- * @LastEditTime: 2020-11-11 11:18:54
+ * @LastEditTime: 2020-11-11 14:35:57
  * @Description:
  */
 import { createPage } from '../../core/index'
+import { getHomeData } from '../../api/index'
 import jumpMixin from '../../mixins/jumpMixin'
 
 createPage({
@@ -14,7 +15,10 @@ createPage({
   onLoad () {},
   onShow () {},
   clickIndex () {
-    this._push('/pages/store/index', { id: 1 })
+    getHomeData().then(res => {
+      console.log(res)
+    })
+    // this._push('/pages/store/index', { id: 1 })
   },
   onHide () {},
   onUnload () {}
