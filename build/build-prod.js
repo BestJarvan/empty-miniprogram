@@ -22,7 +22,7 @@ const config = require('../package.json')
 const version = parseFloat(config.version.split('.').join(''))
 
 function task_clean (done) {
-  del.sync(['dist/**/*'])
+  del.sync(['../dist/**/*'], { force: true })
   done()
 }
 
@@ -107,9 +107,7 @@ function task_npm (done) {
     }
 
     try {
-      const dist = require(dependependPath + '/package.json').miniprogram
-
-      const filePath = path.resolve(dependependPath + '/' + dist)
+      const filePath = path.resolve(dependependPath + '/')
 
       const destPath = path.resolve(__dirname, '../dist/miniprogram_npm/' + name)
 
@@ -130,7 +128,7 @@ function task_npm (done) {
         shell.cp('-Rf', filePath, destPath)
       }
     } catch (error) {
-      throw error
+      throw new Error(error)
     }
   })
   done()

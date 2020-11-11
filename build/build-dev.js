@@ -2,7 +2,7 @@
  * @Author: Yahui.Jiang
  * @Date: 2020-03-03 19:25:50
  * @LastEditors: Yahui.Jiang
- * @LastEditTime: 2020-11-10 20:17:16
+ * @LastEditTime: 2020-11-11 10:27:17
  * @Description:
  */
 const gulp = require('gulp')
@@ -31,7 +31,7 @@ const ipOpt = minimist(process.argv.slice(2), {
 }).ip
 
 function task_clean (done) {
-  del.sync(['dist/**/*'])
+  del.sync(['../dist/**/*'], { force: true })
   done()
 }
 
@@ -107,11 +107,8 @@ function task_npm (done) {
         shell.mkdir('-p', packagePath)
       }
     }
-
     try {
-      const dist = require(dependependPath + '/package.json').miniprogram
-
-      const filePath = path.resolve(dependependPath + '/' + dist)
+      const filePath = path.resolve(dependependPath + '/')
 
       const destPath = path.resolve(__dirname, '../dist/miniprogram_npm/' + name)
 
@@ -132,7 +129,7 @@ function task_npm (done) {
         shell.cp('-Rf', filePath, destPath)
       }
     } catch (error) {
-      throw error
+      throw new Error(error)
     }
   })
   done()

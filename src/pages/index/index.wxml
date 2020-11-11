@@ -1,1 +1,1 @@
-<view class="page-index">首页</view>
+<view class="page-index" bind:tap="clickIndex">首页</view>
