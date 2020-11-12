@@ -2,10 +2,11 @@
  * @Author: Yahui.Jiang
  * @Date: 2020-11-11 13:48:51
  * @LastEditors: Yahui.Jiang
- * @LastEditTime: 2020-11-11 14:50:38
+ * @LastEditTime: 2020-11-12 15:02:55
  * @Description: wx.request模块
  */
-import { BASE_URL, SUCCESS, version } from '../config/index'
+import { BASE_URL, SUCCESS, EXPIRE_LOGIN, version } from '../config/index'
+import login from '../utils/login'
 
 const app = getApp()
 
@@ -57,6 +58,13 @@ class Request {
         success ({ data = {} }) {
           if (data.code === SUCCESS) {
             resolve(data)
+          } else if (data.code === EXPIRE_LOGIN) {
+            login(() => {
+              wx.showToast({
+                title: 'login success, Please try again',
+                icon: 'none'
+              })
+            })
           } else {
             reject(data)
           }

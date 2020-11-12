@@ -1,3 +1,10 @@
+/*
+ * @Author: Yahui.Jiang
+ * @Date: 2020-11-04 09:17:02
+ * @LastEditors: Yahui.Jiang
+ * @LastEditTime: 2020-11-12 15:07:54
+ * @Description:
+ */
 // app.js
 App({
   onLaunch: function () {
@@ -34,6 +41,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    user: {}
   }
 })
